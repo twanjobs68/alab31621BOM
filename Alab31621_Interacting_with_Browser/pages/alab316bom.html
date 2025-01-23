@@ -38,8 +38,26 @@
     <!-- <script src="src/index.js"></script> -->
      <!-- create game the simplest way first -->
       <h1>PLAY GUESS THE NUMBER</h1>
-      <p id="askUserToGuess">Guess my number between 0 and 5. What is it?</p>
-      <p id="3hints"></p>
-      <p id="userTrys"></p>
+      <p id="askUserToGuess">Guess my number between 0 and 5. What is it?</p> <!--message-->
+      <p id="3hints"></p> <!--number of hints-->
+      <p id="userTrys"></p> <!--number of attempts used to guess number-->
+
+      <script>
+    // Use math.floor and Math.random
+      const targetNumber = Math.floor(Math.random() * 5) + 1;
+      let userTrys = 0;
+      let usedHints = 0;
+
+      while (true) {
+        const yourGuess = parseInt(window.prompt("What's your number:"));
+  
+        if (isNaN(yourGuess)) {
+          window.alert("That's not a number! Try again, please!");
+          continue;
+        }
+        attempts++;
+        document.getElementById("userTrys").textContent = `Attempts: ${userTrys}`;
+    }  
+</script>
   </body>
 </html>
