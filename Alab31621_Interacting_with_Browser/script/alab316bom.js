@@ -47,31 +47,31 @@ window.stop()*/
 //Documentation is located at developer.mozilla.org/en-US/docs/Web/API/Window
 //w3schools.com
 
-let myWindow;
+// let myWindow;
 
-function newWindow() {
-  myWindow = window.open(
-    "https://perscholas.org/",
-    "perscholas",
-    "width=800, height=400, resizable=yes, scrollbars=yes, location=yes"
-  );
-  myWindow.focus();
-}
+// function newWindow() {
+//   myWindow = window.open(
+//     "https://perscholas.org/",
+//     "perscholas",
+//     "width=800, height=400, resizable=yes, scrollbars=yes, location=yes"
+//   );
+//   myWindow.focus();
+// }
 
-// Note that the close() method can only
-// affect windows created by the open() method.
-// You cannot close the current browsing window
-// using this method, for example.
-function closeWindow() {
-  myWindow.close();
-}
+// // Note that the close() method can only
+// // affect windows created by the open() method.
+// // You cannot close the current browsing window
+// // using this method, for example.
+// function closeWindow() {
+//   myWindow.close();
+// }
 
-// A sneak peek at event handling!
-// This will be covered in depth during a future lesson.
-document.getElementById("openWindowBtn").addEventListener("click", newWindow);
-document
-  .getElementById("closeWindowBtn")
-  .addEventListener("click", closeWindow);
+// // A sneak peek at event handling!
+// // This will be covered in depth during a future lesson.
+// document.getElementById("openWindowBtn").addEventListener("click", newWindow);
+// document
+//   .getElementById("closeWindowBtn")
+//   .addEventListener("click", closeWindow);
 
 //   //SCREEN OBJECT - open the window 75% and keep it centered. page 16or 17
 
@@ -140,3 +140,55 @@ document
 The game does not need to be practical or complicated.
 2. Use window object methods to gather input from the user and display information to the user.
 3. Use DOM manipulation to give a visual indication of the game's progress in some way.*/
+
+
+      // Use math.floor and Math.random to get a number 0-5
+      const correctNum = Math.floor(Math.random() * 5) + 0;
+      let userTrys = 0;
+      let usedHints = 0;
+
+      while (true) {
+        // use parseInt to convert the number entered(which is a string) to a number
+        const yourGuess = parseInt(window.prompt("What's your number:"));
+        //validate if user entered a number and alert them if it is not
+        if (isNaN(yourGuess)) {
+          window.alert("That's not a number! Try again, please!");
+          continue;
+        }
+        userTrys++;
+
+        //use the getElementById method to select the userTrys id of a paragraph element and
+              //  set the content of it to the string desired to display number of trys 
+              // 
+        document.getElementById(
+          "userTrys"
+        ).textContent = `Number of Trys: ${userTrys}`;
+
+        if (yourGuess === correctNum) {
+          document.getElementById(askUserToGuess).textContent =
+            "CORRECT!!! NICE JOB!!";
+          // use a break function to stop the game once the correct number is submitted by user
+          break;
+        } else if (usedHints < 3) {
+          //check to see if 3 hints have been used, if not increment hint counter
+          usedHints++;
+
+          //use a terinary function to checkk if the number given by user is less or more 
+          // than correctNum chosen by Math.random function
+          const aHint =
+            yourGuess < correctNum
+              ? "Pick Higher Number!"
+              : "Pick Lower Number!";
+
+              //use the getElementById method to select the hints id of a paragraph element and
+              //  set the content of it to the string desired to display for hints and display when no more hints
+
+          document.getElementById(
+            "3Hints"
+          ).textContent = `Here is a hint:  ${aHint} (${usedHints}) /3 hints used already`;
+        } else {
+          document.getElementByID("askUserToGuess").textContent =
+            " NO MORE HINTS!  Keep Guessing or Restart Game!";
+        }
+      }
+    
