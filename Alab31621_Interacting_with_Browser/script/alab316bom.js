@@ -134,7 +134,7 @@ window.stop()*/
 // const list = (app
 //   .appendChild(document.createElement("ul"))
 //   .appendChild(document.createElement("li")).textContent = uaData);
-
+//************************************************************************* */
 /*ALAB316.2.1 Requirements
 1. Create a simple guessing game that pushes users toward the correct answer in some iterative way. 
 The game does not need to be practical or complicated.
